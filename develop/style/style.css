@@ -1,0 +1,104 @@
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  margin: 15px;
+}
+
+ul, .assessment1, .assessment2, .assessment3, .assessment4, .assessment5 {
+  list-style: none;
+}
+
+.main-headings-container {
+  margin: 15px;
+  padding: 15px;
+}
+
+.button-container, .form-container, .form-inline, .text-container, .next-page1, .next-page2, .next-page3, .next-page4, .next-page5 {
+  text-align: center;
+}
+
+
+.score {
+  position: relative; /* Sit on top of the page content */
+  left: 25px;
+  color: blue;
+  text-align: left;
+  font-weight: normal;
+  font-size: 20px;
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.score:hover {
+background-color: azure;
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+.score:active {
+  background-color: azure;
+  color: red;
+  cursor: pointer; /* Add a pointer on hover */
+  }
+
+.empty {
+position: absolute; /* Sit on top of the page content */
+left: 0px;
+right: 0px;
+padding: 0px;
+}
+
+
+.time {
+  position: relative; /* Sit on top of the page content */
+  right: 55px;
+  color: black;
+  text-align: right;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+/* Opacity; display = block/none; visibility = visibile/invisible */
+
+#slide1 {
+    position: relative; 
+    /* visibility: visible;  */
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF(0,0,0,0.5);
+    z-index: 8; 
+    text-align: center;
+
+  }
+
+  #slide2, #slide3, #slide4, #slide5, #slide6, #slide7, #slide8 {
+    position: relative; /* Sit on top of the page content */
+    /* visibility: hidden; */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF(0,0,0,0.5); /* White background with opacity */
+    z-index: 7; /* Specify a stack order in case you're using a different order for other elements */
+    text-align: center;
+  }
+
+  .button {
+    cursor: pointer; /* Add a pointer on hover */
+    margin: 15px;
+  }
+
+  li{
+    margin: 5px 0;
+  }
