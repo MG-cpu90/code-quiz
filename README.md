@@ -71,5 +71,5 @@ THEN I can save my initials and score
 * I was unable to clean up the JavaScript and HTML code so as to avoid so much lengthy repetition
 
 ## Links
-* Deployed URL link: https://mg-cpu90.github.io/assignment4/
-* GitHub Repository link: https://github.com/MG-cpu90/assignment4
+* Deployed URL link: https://mg-cpu90.github.io/code-quiz/
+* GitHub Repository link: https://github.com/MG-cpu90/code-quiz
