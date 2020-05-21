@@ -5,16 +5,9 @@ const scoreContainer = $(".score");
 const headingsContainer = $(".main headings container");
 const quizContainer = $(".quiz-container");
 const startButton = $("#start-button");
-const correctButton1 = $("#correct-button1");
-const correctButton2 = $("#correct-button2");
-const correctButton3 = $("#correct-button3");
-const correctButton4 = $("#correct-button4");
-const correctButton5 = $("#correct-button5");
-const button = $(".button");
 const backButton = $("#Go-back-button");
 const clearButton = $("#Clear-Highscore-button");
 const form = $("form-inline");
-const slidesContainer = $(".slidesContainer");
 const scoreList = $("#score-list");
 let score = [];
 
@@ -45,7 +38,6 @@ const assessment5ul = $(".assessment5ul");
 const assessment6ul = $(".assessment6ul");
 
 // Array of objects for quiz questions
-// var questionsArray = [
 const quiz = [
   {
     name: "slide2",
@@ -111,44 +103,18 @@ const quiz = [
   },
 ];
 
-// Create a <li> node
-let node = document.createElement("LI");
+// Create a <li>"right" text node
+const textRight = `<li>Correct!</li>`;
 
-// Create a "right" text node
-const textnodeRight = document.createTextNode(" Correct! ");
-
-// Create a "wrong" text node
-const textnodeWrong = document.createTextNode(" Wrong! ");
+// Create a <li>"wrong" text node
+const textWrong = `<li>Wrong!</li>`;
 
 let timerInterval;
 
-// Set timer
-function setTime() {
-  timerInterval = setInterval(function () {
-    secondsLeft--;
-    timeContainer.textContent = "Time: " + secondsLeft;
-
-    if (secondsLeft === 0) {
-      clearInterval(timerInterval);
-    }
-  }, 1000);
-}
-
-// Start quiz
-startButton.on("click", function changePage() {
-  console.log("Starting quiz!");
-
-  $("#slide1").css("display", "none");
-  $("#slide2").css("display", "block");
-
-  setTime();
-});
-
 // Slide 1 quiz
-$("#question1").innerHTML = quiz[0].question;
+$("#question1").text(JSON.stringify(quiz[0].question));
 
 for (let i = 0; i < quiz[0].answers.length; i++) {
-  console.log(quiz[0].answers[i]);
 
   $("#list-answers-q1").append(
     `
@@ -157,32 +123,101 @@ for (let i = 0; i < quiz[0].answers.length; i++) {
   );
 }
 
-// Slide 1
-// Correct
-$("#button1.3").on("click", function correct1() {
-  if (!$(this).hasClass("correct1")) {
+// Slide 2 quiz
+$("#question2").text(JSON.stringify(quiz[1].question));
+
+for (let i = 0; i < quiz[1].answers.length; i++) {
+
+  $("#list-answers-q2").append(
+    `
+      <li><button type="button" class="btn btn-primary ${quiz[1].correctButton[i]}" id="button${quiz[1].id[i]}" value="${i} strings">${quiz[1].answers[i]}</button></li>
+    `
+  );
+}
+
+// Slide 3 quiz
+$("#question3").text(JSON.stringify(quiz[2].question));
+
+for (let i = 0; i < quiz[2].answers.length; i++) {
+
+  $("#list-answers-q3").append(
+    `
+      <li><button type="button" class="btn btn-primary ${quiz[2].correctButton[i]}" id="button${quiz[2].id[i]}" value="${i} strings">${quiz[2].answers[i]}</button></li>
+      `
+  );
+}
+
+// Slide 4 quiz
+$("#question4").text(JSON.stringify(quiz[3].question));
+
+for (let i = 0; i < quiz[3].answers.length; i++) {
+
+  $("#list-answers-q4").append(
+    `
+      <li><button type="button" class="btn btn-primary ${quiz[3].correctButton[i]}" id="button${quiz[3].id[i]}" value="${i} strings">${quiz[3].answers[i]}</button></li>
+      `
+  );
+}
+
+// Slide 5 quiz
+$("#question5").text(JSON.stringify(quiz[4].question));
+
+for (let i = 0; i < quiz[4].answers.length; i++) {
+
+  $("#list-answers-q5").append(
+    `
+      <li><button type="button" class="btn btn-primary ${quiz[4].correctButton[i]}" id="button${quiz[4].id[i]}" value="${i} strings">${quiz[4].answers[i]}</button></li>
+      `
+  );
+}
+
+// Start quiz
+startButton.on("click", function changePage() {
+
+  $("#slide1").css("display", "none");
+  $("#slide2").css("display", "block");
+
+  // Set timer
+  function setTime() {
+    timerInterval = setInterval(function () {
+      secondsLeft--;
+      timeContainer.text("Time: " + secondsLeft);
+
+      if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+      }
+
+    }, 1000);
+  }
+  setTime();
+
+});
+
+// Slide 1 Correct
+$(document).click(function (event) {
+  console.log("1. Correct!");
+
+  if ($(event.target).hasClass("correct1")) {
     console.log("1. Correct!");
 
     // Emtpy the div if there is anything there
-    $(".assessment1ul").empty();
+    assessment1ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeRight);
-    $(".assessment1ul").append(textnodeRight);
+    assessment1ul.append(textRight);
   }
 });
 
-// Wrong
-$(".wrong1").on("click", function wrong1() {
-  if (!$(this).hasClass("wrong1")) {
+// Slide 1 Wrong
+$(document).click(function (event) {
+  if ($(event.target).hasClass("wrong1")) {
     console.log("1. Wrong!");
-    s;
+
     // Emtpy the div if there is anything there
-    $(".assessment1ul").empty();
+    assessment1ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeWrong);
-    $(".assessment1ul").append(node);
+    assessment1ul.append(textWrong);
 
     secondsLeft -= 10;
     timeContainer.textContent = "Time: " + secondsLeft;
@@ -201,45 +236,29 @@ $("#next1").on("click", function changePage1() {
   $("#slide3").css("display", "block");
 });
 
-// Slide 2 quiz
-$("#question2").innerHTML = quiz[1].question;
-
-for (let i = 0; i < quiz[1].answers.length; i++) {
-  console.log(quiz[1].answers[i]);
-
-  $("#list-answers-q2").append(
-    `
-      <li><button type="button" class="btn btn-primary ${quiz[1].correctButton[i]}" id="button${quiz[1].id[i]}" value="${i} strings">${quiz[1].answers[i]}</button></li>
-      `
-  );
-}
-
-// Slide 2
-// Correct
-$(".correct2").on("click", function correct2() {
-  if (!$(this).hasClass("correct2")) {
+// Slide 2 Correct
+$(document).click(function (event) {
+  if ($(event.target).hasClass("correct2")) {
     console.log("2. Correct!");
 
     // Emtpy the div if there is anything there
-    $(".assessment2ul").empty();
+    assessment2ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeRight);
-    $(".assessment2ul").append(textnodeRight);
+    assessment2ul.append(textRight);
   }
 });
 
-// Wrong
-$(".wrong2").on("click", function wrong2() {
-  if (!$(this).hasClass("wrong2")) {
+// Slide 2 Wrong
+$(document).click(function (event) {
+  if ($(event.target).hasClass("wrong2")) {
     console.log("2. Wrong!");
 
     // Emtpy the div if there is anything there
-    $(".assessment1ul").empty();
+    assessment2ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeWrong);
-    $(".assessment1ul").append(node);
+    assessment2ul.append(textWrong);
 
     secondsLeft -= 10;
     timeContainer.textContent = "Time: " + secondsLeft;
@@ -258,45 +277,29 @@ $("#next2").on("click", function changePage2() {
   $("#slide4").css("display", "block");
 });
 
-// Slide 3 quiz
-$("#question3").innerHTML = quiz[2].question;
-
-for (let i = 0; i < quiz[2].answers.length; i++) {
-  console.log(quiz[2].answers[i]);
-
-  $("#list-answers-q3").append(
-    `
-      <li><button type="button" class="btn btn-primary ${quiz[2].correctButton[i]}" id="button${quiz[2].id[i]}" value="${i} strings">${quiz[2].answers[i]}</button></li>
-      `
-  );
-}
-
-// Slide 3
-// Correct
-$(".correct3").on("click", function correct3() {
-  if (!$(this).hasClass("correct3")) {
+// Slide 3 Correct
+$(document).click(function (event) {
+  if ($(event.target).hasClass("correct3")) {
     console.log("3. Correct!");
 
     // Emtpy the div if there is anything there
-    $(".assessment3ul").empty();
+    assessment3ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeRight);
-    $(".assessment3ul").append(textnodeRight);
+    assessment3ul.append(textRight);
   }
 });
 
-// Wrong
-$(".wrong3").on("click", function wrong3() {
-  if (!$(this).hasClass("wrong3")) {
+// Slide 3 Wrong
+$(document).click(function (event) {
+  if ($(event.target).hasClass("wrong3")) {
     console.log("3. Wrong!");
 
     // Emtpy the div if there is anything there
-    $(".assessment3ul").empty();
+    assessment3ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeWrong);
-    $(".assessment3ul").append(node);
+    assessment3ul.append(textWrong);
 
     secondsLeft -= 10;
     timeContainer.textContent = "Time: " + secondsLeft;
@@ -315,45 +318,29 @@ $("#next3").on("click", function changePage3() {
   $("#slide5").css("display", "block");
 });
 
-// Slide 4 quiz
-$("#question4").innerHTML = quiz[3].question;
-
-for (let i = 0; i < quiz[3].answers.length; i++) {
-  console.log(quiz[3].answers[i]);
-
-  $("#list-answers-q4").append(
-    `
-      <li><button type="button" class="btn btn-primary ${quiz[3].correctButton[i]}" id="button${quiz[3].id[i]}" value="${i} strings">${quiz[3].answers[i]}</button></li>
-      `
-  );
-}
-
-// Slide 4
-// Correct
-$(".correct4").on("click", function correct4() {
-  if (!$(this).hasClass("correct4")) {
+// Slide 4 Correct
+$(document).click(function (event) {
+  if ($(event.target).hasClass("correct4")) {
     console.log("4. Correct!");
 
     // Emtpy the div if there is anything there
-    $(".assessment4ul").empty();
+    assessment4ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeRight);
-    $(".assessment4ul").append(textnodeRight);
+    assessment4ul.append(textRight);
   }
 });
 
-// Wrong
-$(".wrong4").on("click", function wrong4() {
-  if (!$(this).hasClass("wrong4")) {
+// Slide 4 Wrong
+$(document).click(function (event) {
+  if ($(event.target).hasClass("wrong4")) {
     console.log("4. Wrong!");
 
     // Emtpy the div if there is anything there
-    $(".assessment4ul").empty();
+    assessment4ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeWrong);
-    $(".assessment4ul").append(node);
+    assessment4ul.append(textWrong);
 
     secondsLeft -= 10;
     timeContainer.textContent = "Time: " + secondsLeft;
@@ -372,45 +359,29 @@ $("#next4").on("click", function changePage4() {
   $("#slide6").css("display", "block");
 });
 
-// Slide 5 quiz
-$("#question5").innerHTML = quiz[4].question;
-
-for (let i = 0; i < quiz[4].answers.length; i++) {
-  console.log(quiz[4].answers[i]);
-
-  $("#list-answers-q5").append(
-    `
-      <li><button type="button" class="btn btn-primary ${quiz[4].correctButton[i]}" id="button${quiz[4].id[i]}" value="${i} strings">${quiz[4].answers[i]}</button></li>
-      `
-  );
-}
-
-// Slide 5
-// Correct
-$(".correct5").on("click", function correct5() {
-  if (!$(this).hasClass("correct5")) {
+// Slide 5 Correct
+$(document).click(function (event) {
+  if ($(event.target).hasClass("correct5")) {
     console.log("5. Correct!");
 
     // Emtpy the div if there is anything there
-    $(".assessment5ul").empty();
+    assessment5ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeRight);
-    $(".assessment5ul").append(textnodeRight);
+    assessment5ul.append(textRight);
   }
 });
 
-// Wrong
-$(".wrong5").on("click", function wrong5() {
-  if (!$(this).hasClass("wrong5")) {
+// Slide 5 Wrong
+$(document).click(function (event) {
+  if ($(event.target).hasClass("wrong5")) {
     console.log("5. Wrong!");
 
     // Emtpy the div if there is anything there
-    $(".assessment5ul").empty();
+    assessment5ul.empty();
 
     // Append the text to <li>
-    node.append(textnodeWrong);
-    $(".assessment5ul").append(node);
+    assessment5ul.append(textWrong);
 
     secondsLeft -= 10;
     timeContainer.textContent = "Time: " + secondsLeft;
@@ -431,7 +402,7 @@ $("#next5").on("click", function changePage5() {
   clearInterval(timerInterval);
 
   // Append the time/score text to <p>
-  $(".span").textContent = secondsLeft;
+  $(".span").text(secondsLeft);
 });
 
 // Submit high score
