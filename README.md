@@ -72,6 +72,18 @@ THEN I can save my initials and score
 
 * I was unable to clean up the JavaScript and HTML code so as to avoid so much lengthy repetition
 
+## Application Screenshot
+
+![alt text](./assets/coding_quiz.png "Coding Quiz Screen Shot")
+
+## Accessories Used
+### Languages
+* HTML
+* CSS
+* JavaScript
+* [jQuery](https://jquery.com/)
+* [Bootstrap CSS Framework](https://getbootstrap.com/)
+
 ## Links
 * Deployed URL link: https://mg-cpu90.github.io/code-quiz/index.html
 * GitHub Repository link: https://github.com/MG-cpu90/code-quiz

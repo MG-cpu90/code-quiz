@@ -415,6 +415,14 @@ $("#submit-button").on("click", function (event) {
   $(".Form-inline").submit();
 });
 
+// $("#question4").text(JSON.stringify(quiz[3].question))
+// $(".high-scores-list").append(
+//   `
+//   <li>${secondsLeft}</li>
+//   `
+// );
+
+
 // Append score
 // Create a <li> node
 let nodeScore = document.createElement("LI");
@@ -461,5 +469,5 @@ $("#Clear-Highscore-button").on("click", function scorePage() {
   console.log("Score removed");
 
   let scoreEL = $(".high-scores-list.li");
-  scoreEL.parentNode.children.remove(scoreEL);
+  scoreEL.empty();
 });
