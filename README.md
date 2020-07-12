@@ -22,6 +22,10 @@
 
 
 ## Usage
+### Developer
+* In order to run the application, open the "index.html" file inside the project root directory in the browser window.
+
+
 ### User Story
 
 ```
