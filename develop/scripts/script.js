@@ -344,6 +344,7 @@ $(document).click(function(event) {
         // Append the text to <li>
         assessment4ul.append(textWrong);
 
+        // Deduct 10 seconds from the timer if answer is incorrect
         secondsLeft -= 10;
         timeContainer.textContent = "Time: " + secondsLeft;
 
